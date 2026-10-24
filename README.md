@@ -1,70 +1,62 @@
-# Web Application VAPT Project — OWASP Juice Shop
+# OWASP Juice Shop — VAPT Practice Project
 
 ## Project Overview
 
-This project demonstrates a basic Web Application Vulnerability Assessment and Penetration Testing (VAPT) workflow using OWASP Juice Shop in a local lab environment.
+This project documents hands-on web application security testing performed against a locally hosted OWASP Juice Shop instance in an authorized lab environment.
 
-The purpose is to practice HTTP traffic analysis, API observation, error handling assessment, evidence collection, and security reporting.
+The goal is to practice HTTP traffic analysis, API testing, error handling assessment, evidence collection, and security reporting.
 
-## Lab Environment
+## Scope
 
-- Operating System: Kali Linux
-- Target Application: OWASP Juice Shop
-- Interception and Testing Tool: Burp Suite Professional
-- Target URL: `http://127.0.0.1:3000`
-- Scope: Local lab only
+- **Target:** OWASP Juice Shop
+- **Environment:** Local lab (`127.0.0.1:3000`)
+- **Tools:** Burp Suite, Kali Linux, Git
+- **Testing areas:** HTTP response headers, product search API, malformed input handling, and error disclosure
 
-## Project Structure
+All testing was performed against the local lab instance.
 
-```text
-vapt-project-1/
-├── README.md
-├── evidence/
-│   ├── evidance_1.png
-│   └── burp/
-│       ├── burp_1.png
-│       ├── sql_error.png
-│       └── data
-└── notes/
-    ├── baseline-headers.txt
-    ├── burp-observations.md
-    ├── api-observations.md
-    └── finding-01-sql-error.md
-```
+## Key Observations
 
-## Work Completed
+### 1. Product Search API
 
-- Set up OWASP Juice Shop locally.
-- Verified that the application was accessible.
-- Captured HTTP requests and responses using Burp Suite.
-- Observed the product search API.
-- Recorded baseline HTTP response headers.
-- Tested malformed search input in the local lab.
-- Observed an HTTP 500 response containing SQLite error details.
-- Documented the observation and recommended remediation.
+- Endpoint: `/rest/products/search`
+- Method: `GET`
+- Normal search input returned an HTTP `200 OK` response with JSON product data.
+- A malformed search input returned an HTTP `500 Internal Server Error`.
 
-## Preliminary Security Observation
+### 2. Error Handling
 
-The product search endpoint returned a detailed database error after receiving malformed input.
+The malformed request produced a database-related error message in the response.
 
-This indicates an error-handling weakness requiring further validation. SQL injection has not been conclusively established by this observation alone.
+**Potential impact:** Detailed internal error messages can disclose implementation details and help an attacker understand backend behavior.
 
-## Recommended Remediation
+**Important limitation:** This observation alone does not confirm SQL injection. Further controlled testing is required to establish exploitability and impact.
 
-- Use parameterized SQL queries.
-- Handle unexpected input safely.
-- Avoid exposing internal database errors to users.
-- Keep detailed error information in server-side logs.
-- Add regression tests for malformed requests.
+### 3. HTTP Response Headers
+
+The application's HTTP response headers were recorded and reviewed for security-relevant configuration.
+
+See `notes/baseline-headers.txt` for the captured baseline.
 
 ## Evidence and Reports
 
-Detailed notes and screenshots are available in the `notes/` and `evidence/` directories.
+- `notes/burp-observations.md` — Burp Suite observations
+- `notes/api-observations.md` — API testing notes
+- `notes/finding-01-sql-error.md` — Detailed finding draft
+- `evidence/` — Screenshots supporting the observations
+
+## Recommended Improvements
+
+- Return generic error messages to clients.
+- Keep detailed database errors in server-side logs.
+- Validate and safely handle user-supplied search input.
+- Review security headers against the application's requirements.
+- Retest after remediation before marking any finding as fixed.
+
+## Status and Limitations
+
+This is a learning project, not a comprehensive security audit. Findings should be confirmed through further testing before assigning a final severity or claiming exploitability.
 
 ## Disclaimer
 
-This project was conducted in a local, intentionally vulnerable training environment for educational purposes. Testing should only be performed on systems for which explicit authorization has been granted.
-
-## Author
-
-Harsh Kumbhar — Aspiring VAPT / Cybersecurity Analyst
+Testing was performed in a local, intentionally vulnerable training environment. Do not test systems without explicit authorization.
