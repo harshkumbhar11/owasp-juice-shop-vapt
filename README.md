@@ -10,7 +10,7 @@ The goal is to practice HTTP traffic analysis, API testing, error handling asses
 
 - **Target:** OWASP Juice Shop
 - **Environment:** Local lab (`127.0.0.1:3000`)
-- **Tools:** Burp Suite, Kali Linux, Git
+- **Tools:** Burp Suite Professional, Kali Linux, curl, Git
 - **Testing areas:** HTTP response headers, product search API, malformed input handling, and error disclosure
 
 All testing was performed against the local lab instance.
@@ -43,6 +43,8 @@ See `notes/baseline-headers.txt` for the captured baseline.
 - `notes/burp-observations.md` — Burp Suite observations
 - `notes/api-observations.md` — API testing notes
 - `notes/finding-01-sql-error.md` — Detailed finding draft
+- `notes/final-assessment.md` — Final assessment summary
+- `notes/retest-checklist.md` — Retesting checklist
 - `evidence/` — Screenshots supporting the observations
 
 ## Recommended Improvements
