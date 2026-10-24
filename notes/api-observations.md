@@ -33,7 +33,7 @@ The normal product search request was successfully captured and analyzed using B
 
 ### Evidence
 - Request and response captured in Burp Suite HTTP History.
-- Screenshot to be saved as evidence/burp/product-search.png.
+- Screenshot to be saved as evidence/burp/search-api.png.
 ### Additional Test: CORS Header Verification
 
 **Request**

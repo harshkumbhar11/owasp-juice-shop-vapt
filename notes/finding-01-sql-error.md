@@ -77,7 +77,7 @@ This rating is an initial assessment, not a confirmed CVSS score. The observatio
 - Baseline search request and response captured in Burp Suite.
 - Malformed input response returned HTTP 500.
 - SQLite error message observed in the response.
-- Screenshot should be stored at `evidence/burp/finding-01-error.png`.
+- Screenshot should be stored at `evidence/burp/sql_error.png`.
 
 ## 9. Conclusion
 
