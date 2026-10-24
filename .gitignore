@@ -1,0 +1,11 @@
+# Secrets and session data
+.env
+.env.*
+*.pem
+*.key
+cookies.txt
+*session*
+
+# Local tool data
+.DS_Store
+Thumbs.db
