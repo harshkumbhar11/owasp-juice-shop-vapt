@@ -34,3 +34,26 @@ The normal product search request was successfully captured and analyzed using B
 ### Evidence
 - Request and response captured in Burp Suite HTTP History.
 - Screenshot to be saved as evidence/burp/product-search.png.
+### Additional Test: CORS Header Verification
+
+**Request**
+
+- Method: `GET`
+- Endpoint: `/rest/products/search?q=apple`
+- Tool: `curl`
+- Target: Local OWASP Juice Shop (`127.0.0.1:3000`)
+
+**Observed Results**
+
+- HTTP status: `200 OK`
+- CORS header: `Access-Control-Allow-Origin: *`
+- Content type: `application/json; charset=utf-8`
+- Response: Three product records
+
+**Security Assessment**
+
+The wildcard CORS header permits cross-origin browser access to this response where browser CORS rules allow it. The observed response contains ordinary product information, and this test did not demonstrate exposure of sensitive data or unauthorized access.
+
+**Conclusion:** Record this as a configuration observation, not a confirmed vulnerability. Further assessment would be needed if authenticated or sensitive endpoints use the same policy.
+
+**Evidence:** Terminal response captured on 24 October 2026. Save a screenshot only if one has actually been captured.
