@@ -52,6 +52,17 @@ This information could assist further investigation of input-handling weaknesses
 
 **Important:** This test demonstrates an error-handling weakness, but it does not independently confirm SQL injection. Additional evidence is required before assigning a definitive vulnerability classification or severity.
 
+### Preliminary Risk Assessment
+
+- **Preliminary severity:** Low — provisional
+- **Confidence:** Moderate that detailed database error disclosure occurred
+- **Evidence:** The malformed search request returned HTTP 500 and exposed a SQLite syntax error.
+- **Potential impact:** An attacker may learn limited backend implementation details that could assist further investigation.
+- **Limitations:** No sensitive data exposure or successful SQL injection has been demonstrated by this test. The actual impact depends on the deployment and additional evidence.
+- **Severity status:** Provisional; reassess after evaluating the complete response and application context.
+
+This rating is an initial assessment, not a confirmed CVSS score. The observation should be reported as database error disclosure / improper error handling unless further testing establishes a more serious vulnerability.
+
 ## 7. Recommended Remediation
 
 - Use parameterized SQL queries or prepared statements.
