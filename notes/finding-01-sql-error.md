@@ -80,6 +80,5 @@ The assessment was performed only against the local OWASP Juice Shop practice en
 - [x] Malformed input response captured
 - [x] Error message documented
 - [x] Screenshot saved in the evidence directory
-- [x] Remediation validated
+- [ ] Remediation applied and validated
 - [ ] Final severity assigned after further assessment
-
