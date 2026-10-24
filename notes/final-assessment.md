@@ -5,7 +5,7 @@
 - **Project:** OWASP Juice Shop VAPT Practice
 - **Environment:** Local lab on Kali Linux
 - **Target:** `http://127.0.0.1:3000`
-- **Tools:** Burp Suite, curl, Git
+- **Tools:** Burp Suite Professional, curl, Git
 - **Assessment type:** Beginner web application security assessment
 
 ## 2. Scope
